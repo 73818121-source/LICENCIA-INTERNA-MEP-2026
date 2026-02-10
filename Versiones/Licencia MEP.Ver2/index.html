@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Licencia Interna CONDUCE-MEP</title>
+<style>
+:root {
+  --azul-oscuro: #004d9c;
+  --azul-medio: #007bff;
+  --naranja: #ff8c00;
+  --rojo: #d9534f;
+  --gris-fondo: #f5f5f5;
+}
+
+/* ======== CONFIGURACIÓN GENERAL ======== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--gris-fondo);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  padding: 25px;
+  font-size: 13px;
+  margin: 0;
+}
+
+
+
+
+/* ======== TARJETA BASE ======== */
+.tarjeta {
+  width: 170mm;
+  height: 108mm;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-sizing: border-box;
+  padding: 15px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+.tarjeta.cara-posterior {
+  padding: 0;          /* elimina padding superior/lateral */
+  box-sizing: border-box;
+  justify-content: flex-start !important; /* 🔴 pega todo arriba */
+}
+
+.tarjeta.cara-frontal {
+  margin-top: 0px !important;
+  margin-bottom: 30px;  /* <--- AQUI */
+  overflow: visible;
+}
+
+/* ======== CARA FRONTAL ======== */
+.encabezado {
+  display: flex;
+  align-items: center;
+  border-bottom: 0px solid #ccc;
+  padding-bottom: 0px;
+  gap: 0px;
+}
+
+.logo-espacio {
+  width: 85px;
+  height: 85px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  flex-shrink: 0;
+}
+.logo-espacio img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.titulo-area {
+  margin: 0;              /* quita espacio superior e inferior */
+  padding: 0;
+  text-align: center;     /* centra el texto */
+  line-height: 1.2;       /* ajusta altura del texto */
+}
+.titulo-area h2 {
+  margin: 0;
+  font-size: 26px;
+  color: var(--azul-oscuro);
+}
+.titulo-area p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--azul-oscuro);
+  font-weight: bold;
+  padding-top: px;
+}
+
+/* ======== CUERPO ======== */
+.cuerpo {
+  display: flex;
+  gap: 15px;
+  margin-top: 12px;
+  flex-wrap: nowrap;
+}
+
+.foto {
+  width: 120px;
+  height: 155px;
+  border: 2px solid #333;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: center;
+  background-color: #eee;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+
+  /* 🔵 NUEVO — FONDO SILUETA */
+  background-image: url('img/sin_foto.jpg'); /* Cambia por tu ruta */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+.foto input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.datos {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.nombre-completo input {
+  width: 100%;
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+  border: none;
+  border-bottom: 3px solid var(--azul-oscuro);
+  margin-bottom: 5px;
+  background: none;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  padding-top: 0;
+   letter-spacing: -0.3px; 
+}
+
+.datos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 6px;
+  row-gap: 2px;
+  gap: 2px;
+  width: 100%;
+  box-sizing: border-box;
+  grid-auto-flow: row;
+}
+
+.campo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.campo label {
+  width: 115px;
+  font-weight: bold;
+  color: #000000;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.campo input {
+  flex: none;
+  width: 120px;
+  border: 2px solid #ccc;
+  background-color: #fffde7;
+  padding: 3px 5px;
+  border-radius: 4px;
+  height: 30px;
+  font-size: 15px;
+  box-sizing: border-box;
+  letter-spacing: -0.3px;
+  font-weight: bold; 
+}
+
+
+.caducidad input {
+  background-color: #ff4c4c !important;   /* Rojo brillante */
+  color: #ffffff !important;              /* Texto blanco */
+  font-weight: bold;
+  border: 2px solid #d32f2f;
+  border-radius: 4px;
+  text-align: center;
+  -webkit-appearance: none;               /* Elimina estilo por defecto de Chrome */
+  appearance: none;
+}
+
+.caducidad-interna input {
+  background-color: #ff9800 !important;   /* Naranja intenso */
+  color: #ffffff !important;
+  font-weight: bold;
+  border: 2px solid #e68900;
+  border-radius: 4px;
+  text-align: center;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.campo input[type="date"]::-webkit-datetime-edit {
+  padding-right: 6px;
+}
+
+
+
+/* ======== PIE (OBRA) ======== */
+.obra {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.obra-linea {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  width: 100%;
+  margin-top: 6px;  
+}
+
+.obra-linea strong {
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;   
+
+  border: 2px solid #6f6f6e;        /* 🔴 borde como input */
+  background-color: #6f6f6e;     /* mismo fondo */
+  padding: 0px 6px;              /* altura similar */
+  border-radius: 4px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: 0;
+
+  border-right: none;      /* 🔴 elimina borde duplicado */
+  border-radius: 4px 0 0 4px;  /* solo esquinas izquierdas */
+
+
+}
+
+.obra-linea input {
+  flex: 1;          /* 🔴 AHORA SÍ llena todo */
+  min-width: 0;
+  height: 32px;
+  font-size: 14px;
+  font-weight: bold; 
+  box-sizing: border-box;
+  border-radius: 4px;
+  border-left: none;       /* 🔴 elimina borde duplicado */
+  border-radius: 0 4px 4px 0;  /* solo esquinas derechas */
+}
+
+
+
+.nota-inferior {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #d32f2f;
+  line-height: 1.2;
+  word-wrap: break-word;
+
+  position: relative;
+  z-index: 5;  /* más que la nota-final-bar */
+}
+
+/* ======== CARA POSTERIOR ======== */
+.cara-posterior h3 {
+  background-color: var(--azul-oscuro); /* azul completo */
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin: 0;          /* sin margen */
+  padding: 6px 0;     /* solo padding vertical */
+  width: 100%;        /* ocupa todo el ancho de la tarjeta */
+  box-sizing: border-box; /* para que padding no rompa ancho */
+  border-radius: 0;   /* quita esquinas redondeadas */
+}
+
+
+.tabla-autorizacion {
+  width: calc(100% - 20px); /* deja 10px de margen a cada lado */
+  margin: 0 10px;           /* margen lateral */
+  font-size: 11px;
+  border: none;   /* borde externo */
+   margin-top: 0;
+  margin-bottom: 2px;
+}
+
+/* Quitar formato de encabezado (th) */
+.tabla-autorizacion th {
+  background-color: transparent !important; /* sin color de fondo */
+  color: black !important;                  /* texto negro */
+  border: 1px solid #ccc;                   /* mantiene borde de tabla */
+  padding: 0;                                /* sin padding extra */
+  text-align: center;
+  font-weight: normal;
+  height: 20px;                              /* altura de la fila */
+  font-size: 16px;
+}
+
+
+
+/* Primera fila del encabezado */
+.tabla-autorizacion thead tr {
+  height: 40px;  /* Ajusta este valor según necesites */
+  
+}
+
+/* Celdas del encabezado */
+.tabla-autorizacion thead th {
+   padding: 0;                  
+  text-align: center;
+  vertical-align: middle;      
+  background-color: transparent; 
+  border: none; 
+  padding: bottom 8px;
+   height: auto;
+
+}
+
+
+.tabla-autorizacion thead th input {
+  height: 25px;               
+  font-size: 16px;            
+  width: 100%;                 
+  max-width: 100%;             
+  padding: 2px 3px;           
+  box-sizing: border-box;     
+  text-align: center;         
+  overflow: hidden;           
+  white-space: nowrap;        
+  letter-spacing: -0.5px;     
+  border: 1px solid #4a4a4a;     
+  border-radius: 6px;         
+  background-color: #007bff;  /* 🔹 COLOR DE FONDO AZUL */
+  color: rgb(0, 0, 0); 
+  font-weight: bold;              /* opcional: color del texto */
+}
+
+
+
+/* Celdas normales sin inputs */
+.tabla-autorizacion td {
+  
+  padding: 0;                  /* sin padding extra */
+  background-color: #fff;
+  height: 20px;
+  letter-spacing: -0.5px;             /* coincide con altura de inputs */
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Inputs de modelos */
+.tabla-autorizacion td input {
+  width: 100%;                 /* ocupa todo el ancho de la celda */
+  height: 140%;                /* ocupa toda la altura de la celda */
+  border: 1px solid #afabab;      /* borde negro */
+  background-color: #fff;
+  box-sizing: border-box;      /* incluye borde dentro del tamaño */
+  text-align: center;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.9px;
+}
+
+
+.tabla-autorizacion input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Encabezado EQUIPOS */
+.tabla-autorizacion thead th input {
+  background-color: #656565 !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+/* ======== PIE POSTERIOR (Firmas) ======== */
+/* Firmas alineadas con la tabla */
+.pie-posterior {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+  margin-top: 2px;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.bloque-izquierdo-autorizacion {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.caja-azul-autorizacion {
+  background-color: var(--azul-oscuro);
+  color: white;
+  padding: 3px 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 3px;
+}
+.bloque-izquierdo-autorizacion p {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+}
+.bloque-izquierdo-autorizacion input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px dashed #333;
+  text-align: center;
+  background-color: transparent;
+  font-size: 16px;
+}
+
+/* Firma SSOMA */
+.firma-ssoma {
+  width: 50%;
+  border: 1px solid black;
+  padding: 5px;
+  height: 100px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 10px;
+  position: relative;
+}
+.firma-imagen {
+  max-width: 100%;
+  max-height: 90%;
+  object-fit: contain;
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.firma-ssoma .sello-area {
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.firma-ssoma p {
+  margin: 0;
+  line-height: 1.1;
+}
+.firma-ssoma strong {
+  font-size: 11px;
+}
+
+/* Barra azul inferior */
+.nota-final-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+
+  background-color: var(--azul-oscuro);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+
+  font-size: 14px;
+  padding: 8px 5px;
+  line-height: 1.2;
+
+  border-radius: 0 0 12px 12px; /* coincide con tarjeta */
+  box-sizing: border-box;
+}
+
+  /* Ajustar márgenes para que el carnet ocupe la hoja */
+  body {
+    background: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Quitar sombra y borde visible en impresión */
+  .tarjeta {
+    box-shadow: none !important;
+    border: 1px solid #999 !important;
+    position: relative; 
+  }
+
+
+@media print {
+  /* Forzar impresión de fondos y colores exactos */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Colores de fondo sólidos */
+  .caducidad input {
+    background-color: #d9534f !important; /* rojo */
+    color: #fff !important;
+    font-weight: bold;
+    border: 2px solid #b52b27 !important;
+  }
+
+  .caducidad-interna input {
+    background-color: #ff9800 !important; /* naranja */
+    color: #fff !important;
+    font-weight: bold;
+    border: 2px solid #cc7a00 !important;
+  }
+
+  /* Fondo blanco general */
+  body {
+    background: #fff !important;
+  }
+
+  /* Quitar sombras y bordes */
+  .tarjeta {
+    box-shadow: none !important;
+    border: 1px solid #999 !important;
+  }
+
+  /* Ocultar botones, buscadores, títulos extras */
+   #btn-buscar,
+  #btn-imprimir,
+  #buscar-dni,
+  #resultado-busqueda,
+  #btn-nueva,
+  hr,
+  h3:not(.titulo-posterior) {
+    display: none !important;
+  }
+}
+
+.titulo-imagen {
+  max-width: 100%;  /* Se ajusta al ancho del contenedor */
+  height: auto;     /* Mantiene proporción */
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+/* Fondo blanco solo para las celdas de modelos (no para la columna "Modelo") */
+.tabla-autorizacion td:not(.col-modelo) {
+  background-color: #ffffff !important;
+}
+
+
+#cargando {
+  display: none;
+  display: flex;
+}
+
+
+.recuadro-flotante {
+  background: rgba(255, 255, 255, 0.92); /* blanco translúcido */
+  padding: 25px 35px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  width: 850px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(4px); /* efecto vidrio */
+  margin: auto;
+  margin-top: -700px;  /* sube el recuadro sobre la imagen */
+  height: 250px
+}
+
+ 
+/* =======================
+   📱 DISEÑO RESPONSIVO
+   ======================= */
+@media screen and (max-width: 768px) {
+
+    /* 🔧 Corregir borde del input DNI solo en móvil */
+  #dni-inicio {
+    border: 2px solid #bfbfbf !important;   /* línea gris clara */
+    border-radius: 6px !important;
+    background-color: #ffffff !important;
+  }
+
+
+  /* Contenedor del carnet */
+  .tarjeta {
+    width: 95vw;
+    height: auto;
+    padding: 12px;
+  }
+
+  /* Encabezado */
+  .encabezado {
+    flex-direction: column;
+    text-align: center;
+  }
+  .titulo-area {
+    border-left: none;
+    padding-left: 0;
+  }
+  .titulo-area h2 {
+    font-size: 20px;
+  }
+
+  /* Foto + datos */
+  .cuerpo {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .foto {
+    width: 180px;
+    height: 220px;
+  }
+
+  /* Campos en una sola columna */
+  .datos-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .campo label {
+    width: 110px;
+  }
+
+  /* Pie obra */
+  .obra input {
+    width: 100%;
+  }
+
+  /* Tablas posterior */
+  .tabla-autorizacion th,
+  .tabla-autorizacion td {
+    font-size: 10px;
+    padding: 0px;
+   
+  }
+
+  /* Firmas en columna */
+  .pie-posterior > div:first-child {
+    flex-direction: column !important;
+  }
+
+  .pie-posterior > div > div {
+    width: 100% !important;
+  }
+
+  /* Recuadro flotante en inicio */
+  .recuadro-flotante {
+    width: 95vw;
+    height: auto;
+    margin-top: -50px !important;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .recuadro-flotante img {
+    width: 120px !important;
+  }
+
+  #pagina-inicio img {
+    width: 100% !important;
+  }
+
+#btn-imprimir {
+    display: none !important;
+}
+
+}
+
+
+
+@page {
+    size: 170mm 108mm;
+  margin: 0;
+}
+
+@media print {
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    overflow: visible; 
+    display: block !important;  /* 🔴 MUY IMPORTANTE */
+  }
+
+  /* tarjeta sin transform */
+  .tarjeta {
+    width: 170mm;
+    height: 108mm;
+    margin: 0;
+    box-shadow: none !important;
+    border: 1px solid #999 !important;
+    position: relative;
+  }
+
+  /* 👇 ESTO ES LA CLAVE */
+  .cara-frontal {
+    page-break-after: always; /* termina aquí */
+  }
+
+  .cara-posterior {
+    page-break-before: always;
+    page-break-after: auto; /* empieza nueva hoja */
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ocultar extras */
+  #pagina-inicio,
+  #btn-imprimir,
+  #btn-nueva,
+  #buscar-dni,
+  #resultado-busqueda,
+  hr {
+    display: none !important;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+  
+<div id="cargando" 
+     style="
+       display:none;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background: rgba(0,0,0,0.55);
+       backdrop-filter: blur(3px);
+       color: white;
+       font-size: 28px;
+       font-weight: bold;
+       justify-content: center;
+       align-items: center;
+       z-index: 9999;
+       text-align: center;
+     ">
+  Cargando...
+</div>
+
+
+
+
+<!-- ========== PÁGINA DE INICIO ========== -->
+<div id="pagina-inicio" style="margin-top:40px; text-align:center;">
+    
+    <img src="img/tu_imagen_encabezado.jpg" 
+         alt="Encabezado CONDUCE-MEP"
+         style="width:2000px; margin-bottom:15px;">
+
+    <!-- RECUADRO FLOTANTE -->
+    <div class="recuadro-flotante" style="display:flex; gap:20px; align-items:center;">
+
+     <!-- LOGO A LA IZQUIERDA -->    
+        
+    <div>
+        <img src="img/logo_mota_engil.jpg"
+             alt="Logo MEP"
+             style="width:150px;">
+    </div>
+
+
+      <!-- TEXTO + BUSCADOR A LA DERECHA -->
+      <div style="text-align:center;">
+        <h1 style="margin-top:0;">CONSULTA DE LICENCIA INTERNA CONDUCE MEP</h1>
+        <p>Ingrese su número de documento para ver el estado de su licencia :</p>
+
+        <input type="text" id="dni-inicio" placeholder="Documento de identidad"
+               style="padding:10px; width:250px; font-size:16px;">
+
+        <button onclick="buscarDesdeInicio()" style="
+            padding:10px 20px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            margin-left:10px;
+        ">
+            Buscar
+        </button>
+     </div>
+
+    </div>
+</div>
+
+
+<!-- ========== BUSCADOR + CARNET ========== -->
+<div id="pagina-buscador" style="display:none;">
+<!-- 🔍 BUSCADOR OCULTO -->
+<div style="display:none;">
+  <h3>🔍 Buscar registro</h3>
+  <input type="text" id="buscar-dni" placeholder="Ingrese DNI">
+  <button id="btn-buscar">Buscar</button>
+  <div id="resultado-busqueda" style="margin-top: 10px;"></div>
+</div>
+
+
+
+<div class="tarjeta cara-frontal">
+  <div class="encabezado">
+    <div class="logo-espacio">
+      <img src="img/logo_mota_engil.jpg" alt="LOGO">
+    </div>
+    <div class="titulo-area">
+       <img src="img/logo_conducemep.jpeg" alt="Licencia CONDUCE-MEP" class="titulo-imagen">
+
+      <p>CAPACITACIÓN Y ENTRENAMIENTO - EQUIPOS</p>
+    </div>
+  </div>
+
+  <div class="cuerpo">
+    <div class="foto">
+      <input type="file" id="foto-input" accept="image/*">
+      <span>Subir foto</span>
+      <img id="foto-preview" alt="Foto del operador">
+    </div>
+    <div class="datos">
+      <div class="nombre-completo">
+        <input type="text" name="nombre_completo" placeholder="NOMBRE COMPLETO DEL OPERADOR">
+      </div>
+      <div class="datos-grid">
+    <div class="campo"><label>DNI:</label><input type="text" name="dni"></div> 
+    <div class="campo"><label>CATG. MTC:</label><input type="text" name="lic_conducir_categoria" placeholder="A-IIIc"></div>
+    <div class="campo"><label>EMISIÓN MTC:</label><input type="date" name="lic_conducir_emision"></div>
+    <div class="campo caducidad"><label>CADUCIDAD:</label><input type="date" name="lic_conducir_caducidad"></div>
+    <div class="campo"><label>EMISIÓN MEP:</label><input type="date" name="lic_interna_emision"></div> 
+    <div class="campo caducidad-interna"><label>CADUCIDAD:</label><input type="date" name="lic_interna_caducidad" value="Térm. obra"></div>
+    <div class="campo"><label>LICENCIA MEP:</label><input type="text" name="licencia_id" placeholder="EQUI-MEP-LIQ-XXX"></div>
+    <div class="campo"><label>CARGO:</label><input type="text" name="cargo_area"></div> 
+      </div>
+    </div>
+  </div>
+
+  <div class="obra-linea">
+    <strong>VÁLIDO SOLO PARA LA OBRA:</strong>
+    <input type="text" name="obra_valida" placeholder="Nombre de la obra">
+   
+  </div>
+
+  <div class="nota-inferior">
+  PORTAR OBLIGATORIO AL OPERAR UN EQUIPO O VEHÍCULO - MEP
+  </div>
+  
+  <div class="nota-final-bar">
+    NO OPERE UN EQUIPO SIN AUTORIZACIÓN
+  </div>
+
+</div>
+
+<div class="tarjeta cara-posterior">
+  <h3 class="titulo-posterior">AUTORIZACIONES DE OPERACIÓN Y CONDUCCIÓN</h3>
+  <table class="tabla-autorizacion">
+    <thead>
+      <tr>
+        <th>EQUIPO 1<br><input type="text" name="titulo_eq1" placeholder="-"></th>
+        <th>EQUIPO 2<br><input type="text" name="titulo_eq2" placeholder="-"></th>
+        <th>EQUIPO 3<br><input type="text" name="titulo_eq3" placeholder="-"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <td><input name="eq1_m1"></td><td><input name="eq2_m1"></td><td><input name="eq3_m1"></td></tr>
+      <td><input name="eq1_m2"></td><td><input name="eq2_m2"></td><td><input name="eq3_m2"></td></tr>
+      <td><input name="eq1_m3"></td><td><input name="eq2_m3"></td><td><input name="eq3_m3"></td></tr>
+      <td><input name="eq1_m4"></td><td><input name="eq2_m4"></td><td><input name="eq3_m4"></td></tr>
+      <td><input name="eq1_m5"></td><td><input name="eq2_m5"></td><td><input name="eq3_m5"></td></tr>
+      <td><input name="eq1_m6"></td><td><input name="eq2_m6"></td><td><input name="eq3_m6"></td></tr>
+      <td><input name="eq1_m7"></td><td><input name="eq2_m7"></td><td><input name="eq3_m7"></td></tr>
+    </tbody>
+  </table>
+
+<!-- PIE POSTERIOR (FIRMAS + TEXTOS ALINEADOS) -->
+<!-- PIE POSTERIOR (FIRMAS SIN TEXTOS, FIRMAS GRANDES) -->
+<div class="pie-posterior" style="margin-top:6px;">
+
+  <!-- CONTENEDOR LOGO + FIRMAS -->
+  <div style="display:flex; gap:10px; align-items:flex-start;">
+
+    <!-- LOGO -->
+    <div style="
+      width: 50%;
+      border: black;
+      height: 120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-sizing:border-box;
+    ">
+      <img src="img/logo_conduccion_segura.jpg"
+           alt="Logo"
+           style="max-width:90%; max-height:90%; object-fit:contain;">
+    </div>
+
+    <!-- FIRMAS -->
+    <div style="width:78%; display:flex; gap:10px;">
+
+      <!-- Firma izquierda -->
+      <div style="width:70%; text-align:center;">
+        <div class="caja-azul-autorizacion">Jefe de SSOMA</div>
+        <div style="
+          border:1px solid #999;
+          border-top:none;
+          height:100px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+        ">
+          <img src="img/firma_somma.jpeg"
+               style="max-width:90%; max-height:70px; object-fit:contain;">
+        </div>
+      </div>
+
+      <!-- Firma derecha -->
+      <div style="width:70%; text-align:center;">
+        <div class="caja-azul-autorizacion">Resp. de emisión</div>
+        <div style="
+          border:1px solid #999;
+          border-top:none;
+          height:100px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+        ">
+          <img src="img/firma_entrenamiento.jpeg"
+               style="max-width:90%; max-height:70px; object-fit:contain;">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="nota-final-bar">
+  REPORTE A SSOMA AL ENCONTRAR OPERANDO EQUIPOS SIN AUTORIZACIÓN
+  </div>
+
+</div>
+
+  
+</div>
+
+ <!-- ====== BOTÓN DE IMPRESIÓN ====== -->
+<button id="btn-imprimir" style="
+  background-color: var(--azul-oscuro);
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 35px;
+">🖨️ Imprimir Carnet</button>
+
+<button id="btn-nueva" onclick="nuevaBusqueda()"
+  style="
+    background-color: orange;        /* Fondo naranja */
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: 1px solid #bfbfbf;       /* Borde plomo */
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top:15px;">
+  🔄 Nueva búsqueda
+</button>
+
+</div>
+
+
+
+
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzV3Rbymy6UHsAnmbv_ea6V0u3WlWaa4NZZ847yd5_AyZWZQC6nbRQEvaYNxya1YtUV/exec";
+
+
+</script>
+
+
+
+<script>
+
+// === FUNCIÓN PARA RENDERIZAR TABLA ===
+function mostrarTabla(datos, titulo) {
+  const cont = document.getElementById("resultado-busqueda");
+  cont.innerHTML = `<h4>${titulo}</h4>`;
+
+  if (datos.length === 0) {
+    cont.innerHTML += "<p>No se encontraron registros.</p>";
+    return;
+  }
+
+  const tabla = document.createElement("table");
+  tabla.border = "1";
+  tabla.style.borderCollapse = "collapse";
+  tabla.style.marginTop = "10px";
+  tabla.innerHTML = `
+    <tr>
+      <th>Fecha</th>
+      <th>DNI</th>
+      <th>Nombre</th>
+      <th>Categoría</th>
+      <th>Equipo</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Acciones</th>
+    </tr>
+  `;
+
+  datos.forEach(r => {
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td>${new Date(r.fecha).toLocaleDateString()}</td>
+      <td><input value="${r.dni}" style="width:80px"></td>
+      <td><input value="${r.nombre}" style="width:130px"></td>
+      <td><input value="${r.categoria}" style="width:60px"></td>
+      <td><input value="${r.equipo}" style="width:90px"></td>
+      <td><input value="${r.marca}" style="width:90px"></td>
+      <td><input value="${r.modelo}" style="width:90px"></td>
+      <td><button onclick="guardarEdicion(${r.row}, this)">💾</button></td>
+    `;
+    tabla.appendChild(fila);
+  });
+
+  cont.appendChild(tabla);
+}
+
+
+//FUNCION BUSCAR
+
+document.getElementById("btn-buscar").addEventListener("click", async () => {
+  const dni = document.getElementById("buscar-dni").value.trim();
+  if (!dni) return alert("Ingrese un DNI para buscar.");
+
+   mostrarCargando(); // <--- ACTIVAR
+
+  try {
+    const TOKEN = "MEP123"; // mismo que en Apps Script
+
+  const resp = await fetch(SCRIPT_URL, {
+  method: "POST",
+  body: JSON.stringify({ action: "buscar", dni, token: TOKEN }),
+  });
+
+    const data = await resp.json();
+    console.log("Datos recibidos:", data);
+
+    
+
+    ocultarCargando(); // <--- DESACTIVAR
+
+    if (!data || data.length === 0) {
+    document.getElementById("cargando").style.display = "none";
+    alert("No se encontró registro para este DNI");
+    regresarInicio();   // ← AQUÍ REGRESA A LA PÁGINA DE INICIO
+    return;
+}
+
+    // --- Rellenar datos generales del operador (usa el primer registro)
+    const r = data[0];
+    document.querySelector('[name="nombre_completo"]').value = r.nombre || "";
+    document.querySelector('[name="dni"]').value = r.dni || "";
+    document.querySelector('[name="lic_conducir_categoria"]').value = r.categoria || "";
+    document.querySelector('[name="lic_conducir_emision"]').value = r.fechaEmision || "";
+    document.querySelector('[name="lic_conducir_caducidad"]').value = r.fechaCaducidad || "";
+    document.querySelector('[name="licencia_id"]').value = r.idLicencia || "";
+    document.querySelector('[name="cargo_area"]').value = r.cargo || "";
+    document.querySelector('[name="lic_interna_emision"]').value = r.fechaEmisionInterna || "";
+    document.querySelector('[name="lic_interna_caducidad"]').value = r.fechaCaducidadInterna || "";
+    document.querySelector('[name="obra_valida"]').value = r.obra || "";
+    //document.querySelector('input[placeholder="Nombre Jefe SSOMA"]').value = r.jefeSSOMA || "";
+    //document.querySelector('input[placeholder="Área de Capacitación y Entrenamiento"]').value = r.responsableEmision || "";
+
+
+console.log("Registro completo:", r);
+console.log("Foto URL existe:", !!r.fotoURL);
+
+    // === LIMPIAR TABLA ===
+for (let i = 1; i <= 7; i++) {
+  document.querySelector(`[name="eq1_m${i}"]`).value = "-";
+  document.querySelector(`[name="eq2_m${i}"]`).value = "-";
+  document.querySelector(`[name="eq3_m${i}"]`).value = "-";
+}
+
+document.querySelector('[name="titulo_eq1"]').value = "-";
+document.querySelector('[name="titulo_eq2"]').value = "-";
+document.querySelector('[name="titulo_eq3"]').value = "-";
+
+// === RELLENAR DESDE UNA SOLA FILA ===
+
+
+// ---------- EQUIPO 1 ----------
+document.querySelector('[name="titulo_eq1"]').value = r.equipo1 || r.equipo || "-";
+for (let i = 1; i <= 7; i++) {
+  document.querySelector(`[name="eq1_m${i}"]`).value = r[`modelo${i}`] || "-";
+}
+
+// ---------- EQUIPO 2 ----------
+document.querySelector('[name="titulo_eq2"]').value = r.equipo2 || "-";
+for (let i = 1; i <= 7; i++) {
+  document.querySelector(`[name="eq2_m${i}"]`).value = r[`modelo${i + 7}`] || "-";
+}
+
+// ---------- EQUIPO 3 ----------
+document.querySelector('[name="titulo_eq3"]').value = r.equipo3 || "-";
+for (let i = 1; i <= 7; i++) {
+  document.querySelector(`[name="eq3_m${i}"]`).value = r[`modelo${i + 14}`] || "-";
+}
+
+console.log("URL FOTO:", r.fotoURL);
+
+
+// --- Mostrar foto desde Drive ---
+const fotoPreview = document.getElementById('foto-preview');
+const fotoSpan = document.querySelector('.foto span');
+
+if (r.fotoURL) {
+  const urlImagen = convertirDriveURL(r.fotoURL);
+
+  fotoPreview.src = urlImagen;
+  fotoPreview.style.display = 'block';
+  fotoSpan.style.display = 'none';
+} 
+
+else {
+  fotoPreview.src = "";
+  fotoPreview.style.display = 'none';
+  fotoSpan.style.display = 'block';
+}
+
+
+
+function convertirDriveURL(url) {
+  if (!url) return "";
+
+  // Si ya viene en formato uc, extrae el id
+  let match = url.match(/id=([^&]+)/);
+  if (!match) {
+    // formato /d/ID/view
+    match = url.match(/\/d\/([^\/]+)/);
+  }
+
+  if (!match) return "";
+
+  const fileId = match[1];
+  return `https://lh3.googleusercontent.com/d/${fileId}`;
+}
+
+
+    alert("✅ Datos cargados correctamente.");
+  } catch (err) {
+    alert("❌ Error al buscar: " + err);
+  }
+});
+
+
+
+
+</script>
+
+
+
+
+<script>
+// === MODO SOLO VISUALIZACIÓN ===
+function activarSoloLectura() {
+  const inputs = document.querySelectorAll('input:not([type="file"])');
+  inputs.forEach(inp => {
+    // Excluir el buscador de DNI y los botones
+    if (inp.id === "buscar-dni" || inp.id === "dni-inicio") return;
+
+    inp.setAttribute("readonly", true);
+    inp.style.backgroundColor = "#f5f5f5";
+    inp.style.pointerEvents = "none";
+  });
+
+  // Permitir solo cambiar la foto
+  const fotoInput = document.getElementById("foto-input");
+  fotoInput.removeAttribute("disabled");
+  fotoInput.style.pointerEvents = "auto";
+}
+// === IMPRIMIR CARNET ===
+document.getElementById("btn-imprimir").addEventListener("click", () => {
+  window.print();
+});
+
+// Activar modo visualización después de cargar datos
+document.addEventListener("DOMContentLoaded", activarSoloLectura);
+</script>
+
+
+</div>
+
+<script>
+function mostrarBuscador() {
+  document.getElementById("pagina-inicio").style.display = "none";
+  document.getElementById("pagina-buscador").style.display = "block";
+}
+</script>
+
+
+<script>
+function buscarDesdeInicio() {
+  const dni = document.getElementById("dni-inicio").value.trim();
+  if (!dni) return alert("Ingrese un DNI para buscar.");
+
+  // mostrar la página del carnet
+  document.getElementById("pagina-inicio").style.display = "none";
+  document.getElementById("pagina-buscador").style.display = "block";
+
+  // poner el DNI en el buscador del carnet
+  document.getElementById("buscar-dni").value = dni;
+
+  // activar el mismo botón existente
+  document.getElementById("btn-buscar").click();
+}
+</script>
+
+<script>
+function mostrarCargando() {
+  document.getElementById("cargando").style.display = "flex";
+}
+function ocultarCargando() {
+  document.getElementById("cargando").style.display = "none";
+}
+</script>
+
+<script>
+
+function nuevaBusqueda() {
+  window.location.reload(); // Recarga la página y vuelve al inicio
+}
+
+
+
+</script>
+<script>
+
+  function regresarInicio() {
+    document.getElementById("pagina-buscador").style.display = "none";
+    document.getElementById("pagina-inicio").style.display = "block";
+}
+
+// --- Activar ENTER para buscar desde inicio ---
+document.getElementById("dni-inicio").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+        buscarDesdeInicio();
+    }
+});
+
+</script>
+
+</body>
+</html>

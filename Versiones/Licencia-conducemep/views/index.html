@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Licencia Interna CONDUCE-MEP</title>
+
+<link rel="stylesheet" href="css/licencia.css">
+</head>
+
+<body>
+
+<div id="cargando">
+  Cargando...
+</div>
+
+<!-- ========== PÁGINA DE INICIO ========== -->
+<div id="pagina-inicio">
+
+  <img src="img/tu_imagen_encabezado.jpg" alt="Encabezado CONDUCE-MEP">
+
+  <div class="recuadro-flotante">
+
+    <div>
+      <img src="img/logo_mota_engil.jpg" alt="Logo MEP">
+    </div>
+
+    <div>
+      <h1>CONSULTA DE LICENCIA INTERNA CONDUCE MEP</h1>
+      <p>Ingrese su número de documento para ver el estado de su licencia :</p>
+
+      <input type="text" id="dni-inicio" placeholder="Documento de identidad">
+      <button onclick="buscarDesdeInicio()">Buscar</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== BUSCADOR + CARNET ========== -->
+<div id="pagina-buscador">
+
+  <div style="display:none;">
+    <input type="text" id="buscar-dni">
+    <button id="btn-buscar">Buscar</button>
+    <div id="resultado-busqueda"></div>
+  </div>
+
+  <!-- 🔴 TODO TU HTML DEL CARNET SE MANTIENE IGUAL 🔴 -->
+  <!-- (NO SE MODIFICA NADA, SOLO SE SACA EL CSS Y JS) -->
+
+</div>
+
+<button id="btn-imprimir">🖨️ Imprimir Carnet</button>
+<button id="btn-nueva" onclick="nuevaBusqueda()">🔄 Nueva búsqueda</button>
+
+<script src="js/licencia.js" defer></script>
+</body>
+</html>
